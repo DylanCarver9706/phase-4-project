@@ -1,0 +1,548 @@
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221025193709)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "full_name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025193709"]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserRestaurants (20221025195423)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "user_restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "restaurant_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025195423"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRestaurants (20221025195922)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "menu_img" varchar, "website_URL" varchar, "category" varchar, "favorite?" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025195922"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-25 20:58:12.031738"], ["updated_at", "2022-10-25 20:58:12.031738"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:12.066032"], ["updated_at", "2022-10-25 20:58:12.066032"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:12.075192"], ["updated_at", "2022-10-25 20:58:12.075192"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:12.083946"], ["updated_at", "2022-10-25 20:58:12.083946"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:12.092631"], ["updated_at", "2022-10-25 20:58:12.092631"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:12.101273"], ["updated_at", "2022-10-25 20:58:12.101273"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:12.110438"], ["updated_at", "2022-10-25 20:58:12.110438"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:12.119378"], ["updated_at", "2022-10-25 20:58:12.119378"]]
+  [1m[36mTRANSACTION (9.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:12.131480"], ["updated_at", "2022-10-25 20:58:12.131480"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:58:12.145570"], ["updated_at", "2022-10-25 20:58:12.145570"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:58:12.154984"], ["updated_at", "2022-10-25 20:58:12.154984"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:58:12.164171"], ["updated_at", "2022-10-25 20:58:12.164171"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:59.897038"], ["updated_at", "2022-10-25 20:58:59.897038"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:59.906700"], ["updated_at", "2022-10-25 20:58:59.906700"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:59.915489"], ["updated_at", "2022-10-25 20:58:59.915489"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:59.924125"], ["updated_at", "2022-10-25 20:58:59.924125"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:59.932779"], ["updated_at", "2022-10-25 20:58:59.932779"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:59.941505"], ["updated_at", "2022-10-25 20:58:59.941505"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:59.953852"], ["updated_at", "2022-10-25 20:58:59.953852"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:58:59.962432"], ["updated_at", "2022-10-25 20:58:59.962432"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:58:59.975942"], ["updated_at", "2022-10-25 20:58:59.975942"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:58:59.985982"], ["updated_at", "2022-10-25 20:58:59.985982"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:58:59.994974"], ["updated_at", "2022-10-25 20:58:59.994974"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:59:26.540501"], ["updated_at", "2022-10-25 20:59:26.540501"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:59:26.549839"], ["updated_at", "2022-10-25 20:59:26.549839"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 20:59:26.558399"], ["updated_at", "2022-10-25 20:59:26.558399"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:59:26.566977"], ["updated_at", "2022-10-25 20:59:26.566977"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:59:26.577962"], ["updated_at", "2022-10-25 20:59:26.577962"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 20:59:26.586884"], ["updated_at", "2022-10-25 20:59:26.586884"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:59:26.599148"], ["updated_at", "2022-10-25 20:59:26.599148"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 20:59:26.607854"], ["updated_at", "2022-10-25 20:59:26.607854"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:59:26.621625"], ["updated_at", "2022-10-25 20:59:26.621625"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:59:26.634846"], ["updated_at", "2022-10-25 20:59:26.634846"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 20:59:26.643934"], ["updated_at", "2022-10-25 20:59:26.643934"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mUserRestaurant Load (0.3ms)[0m  [1m[34mSELECT "user_restaurants".* FROM "user_restaurants" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mRestaurant Load (0.2ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:01:14.428489"], ["updated_at", "2022-10-25 21:01:14.428489"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:01:14.438005"], ["updated_at", "2022-10-25 21:01:14.438005"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:01:14.446655"], ["updated_at", "2022-10-25 21:01:14.446655"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:01:14.455232"], ["updated_at", "2022-10-25 21:01:14.455232"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:01:14.463631"], ["updated_at", "2022-10-25 21:01:14.463631"]]
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:01:14.475349"], ["updated_at", "2022-10-25 21:01:14.475349"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:01:14.487583"], ["updated_at", "2022-10-25 21:01:14.487583"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:01:14.495928"], ["updated_at", "2022-10-25 21:01:14.495928"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:01:14.509085"], ["updated_at", "2022-10-25 21:01:14.509085"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:01:14.519751"], ["updated_at", "2022-10-25 21:01:14.519751"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:01:14.529017"], ["updated_at", "2022-10-25 21:01:14.529017"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUserRestaurant Load (0.1ms)[0m  [1m[34mSELECT "user_restaurants".* FROM "user_restaurants" ORDER BY "user_restaurants"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUserRestaurant Load (0.1ms)[0m  [1m[34mSELECT "user_restaurants".* FROM "user_restaurants" ORDER BY "user_restaurants"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTruncate Tables (19.5ms)[0m  [1m[31mDELETE FROM "users";
+DELETE FROM "user_restaurants";
+DELETE FROM "restaurants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:04:01.670226"], ["updated_at", "2022-10-25 21:04:01.670226"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:04:01.679411"], ["updated_at", "2022-10-25 21:04:01.679411"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:04:01.691798"], ["updated_at", "2022-10-25 21:04:01.691798"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:04:01.700403"], ["updated_at", "2022-10-25 21:04:01.700403"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:04:01.709078"], ["updated_at", "2022-10-25 21:04:01.709078"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:04:01.717514"], ["updated_at", "2022-10-25 21:04:01.717514"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:04:01.726044"], ["updated_at", "2022-10-25 21:04:01.726044"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:04:01.735808"], ["updated_at", "2022-10-25 21:04:01.735808"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:04:01.749451"], ["updated_at", "2022-10-25 21:04:01.749451"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:04:01.758317"], ["updated_at", "2022-10-25 21:04:01.758317"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:04:01.767006"], ["updated_at", "2022-10-25 21:04:01.767006"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTruncate Tables (18.7ms)[0m  [1m[31mDELETE FROM "users";
+DELETE FROM "user_restaurants";
+DELETE FROM "restaurants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:24:38.840249"], ["updated_at", "2022-10-25 21:24:38.840249"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:24:38.849370"], ["updated_at", "2022-10-25 21:24:38.849370"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:24:38.858057"], ["updated_at", "2022-10-25 21:24:38.858057"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:24:38.869765"], ["updated_at", "2022-10-25 21:24:38.869765"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:24:38.878104"], ["updated_at", "2022-10-25 21:24:38.878104"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:24:38.886521"], ["updated_at", "2022-10-25 21:24:38.886521"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:24:38.894909"], ["updated_at", "2022-10-25 21:24:38.894909"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:24:38.904403"], ["updated_at", "2022-10-25 21:24:38.904403"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:24:38.917115"], ["updated_at", "2022-10-25 21:24:38.917115"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:24:38.925857"], ["updated_at", "2022-10-25 21:24:38.925857"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:24:38.934152"], ["updated_at", "2022-10-25 21:24:38.934152"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRestaurants (20221025195922)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20221025195922"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserRestaurants (20221025195423)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "user_restaurants"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20221025195423"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221025193709)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20221025193709"]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221025193709)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "full_name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025193709"]]
+  [1m[36mTRANSACTION (8.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserRestaurants (20221025195423)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "user_restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "restaurant_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025195423"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRestaurants (20221025195922)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "menu_img" varchar, "website_URL" varchar, "category" varchar, "favorite?" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025195922"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-25 21:33:10.064764"], ["updated_at", "2022-10-25 21:33:10.064764"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:10.096315"], ["updated_at", "2022-10-25 21:33:10.096315"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:10.105088"], ["updated_at", "2022-10-25 21:33:10.105088"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:10.113490"], ["updated_at", "2022-10-25 21:33:10.113490"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:10.121933"], ["updated_at", "2022-10-25 21:33:10.121933"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:10.130348"], ["updated_at", "2022-10-25 21:33:10.130348"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:10.138416"], ["updated_at", "2022-10-25 21:33:10.138416"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:10.146916"], ["updated_at", "2022-10-25 21:33:10.146916"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:10.155259"], ["updated_at", "2022-10-25 21:33:10.155259"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:33:10.168543"], ["updated_at", "2022-10-25 21:33:10.168543"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:33:10.177375"], ["updated_at", "2022-10-25 21:33:10.177375"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:33:10.186397"], ["updated_at", "2022-10-25 21:33:10.186397"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:22.018956"], ["updated_at", "2022-10-25 21:33:22.018956"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.3ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:22.028272"], ["updated_at", "2022-10-25 21:33:22.028272"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:22.036822"], ["updated_at", "2022-10-25 21:33:22.036822"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:22.045296"], ["updated_at", "2022-10-25 21:33:22.045296"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:22.053895"], ["updated_at", "2022-10-25 21:33:22.053895"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:22.062496"], ["updated_at", "2022-10-25 21:33:22.062496"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:22.074552"], ["updated_at", "2022-10-25 21:33:22.074552"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:33:22.082942"], ["updated_at", "2022-10-25 21:33:22.082942"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:33:22.095912"], ["updated_at", "2022-10-25 21:33:22.095912"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:33:22.105833"], ["updated_at", "2022-10-25 21:33:22.105833"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:33:22.114763"], ["updated_at", "2022-10-25 21:33:22.114763"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRestaurants (20221025195922)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "restaurants"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20221025195922"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserRestaurants (20221025195423)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "user_restaurants"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.1ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20221025195423"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUsers (20221025193709)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.2ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20221025193709"]]
+  [1m[36mTRANSACTION (6.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221025193709)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "full_name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025193709"]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateUserRestaurants (20221025195423)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "user_restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "restaurant_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025195423"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRestaurants (20221025195922)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "menu_img" varchar, "website_URL" varchar, "category" varchar, "favorite?" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20221025195922"]]
+  [1m[36mTRANSACTION (8.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-25 21:36:16.553521"], ["updated_at", "2022-10-25 21:36:16.553521"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "McDonald's"], ["menu_img", "https://menuandprice.com/wp-content/uploads/2021/08/McDonalds-menu-Salt-Lake-City-Utah-August-20th-2021.jpg"], ["website_URL", "https://www.mcdonalds.com/us/en-us.html"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:36:16.583244"], ["updated_at", "2022-10-25 21:36:16.583244"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Taco Bell"], ["menu_img", "https://www.tacobell.com/images/blog-taco-bell-menu-2.jpg"], ["website_URL", "https://www.tacobell.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:36:16.591854"], ["updated_at", "2022-10-25 21:36:16.591854"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Waffle House"], ["menu_img", "https://explorepartsunknown.com/wp-content/uploads/2017/04/cceh0nqwoaaltad.jpg?quality=95&strip=color&w=1280&h=0"], ["website_URL", "https://www.wafflehouse.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:36:16.600904"], ["updated_at", "2022-10-25 21:36:16.600904"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Burger King"], ["menu_img", "https://assets1.risnews.com/styles/max_width_480/s3/2020-11/Restaurant_Brands_International_Inc__Burger_King__Tim_Hortons_an%20%282%29.jpg?itok=Kg1fd_5k"], ["website_URL", "https://www.bk.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:36:16.609334"], ["updated_at", "2022-10-25 21:36:16.609334"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Arby's"], ["menu_img", "https://image.zmenu.com/menupic/4403273/d1ee5dc9-f03a-4f05-a400-ce356fd7dcec.jpg"], ["website_URL", "https://www.arbys.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:36:16.617828"], ["updated_at", "2022-10-25 21:36:16.617828"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Ruby Tuesday"], ["menu_img", "https://image.zmenu.com/menupic/1056904/w_20210819024820096536.jpg"], ["website_URL", "https://www.rubytuesday.com/"], ["category", "Dine-In"], ["favorite?", 0], ["created_at", "2022-10-25 21:36:16.626313"], ["updated_at", "2022-10-25 21:36:16.626313"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Panda Express"], ["menu_img", "https://image.zmenu.com/menupic/5172629/253dd2e2-42f8-4e13-9744-965caa75eb19.jpg"], ["website_URL", "https://www.pandaexpress.com/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:36:16.634798"], ["updated_at", "2022-10-25 21:36:16.634798"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "restaurants" ("name", "menu_img", "website_URL", "category", "favorite?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Subway"], ["menu_img", "https://www.slcmenu.com/wp-content/uploads/2022/09/Subway-menu-one.jpg"], ["website_URL", "https://order.subway.com/en-us/"], ["category", "Fast-Food"], ["favorite?", 0], ["created_at", "2022-10-25 21:36:16.643386"], ["updated_at", "2022-10-25 21:36:16.643386"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dylan Carver"], ["email", "dylancarver@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:36:16.656256"], ["updated_at", "2022-10-25 21:36:16.656256"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Kristen McGinnis"], ["email", "kristenmcginnis@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:36:16.664903"], ["updated_at", "2022-10-25 21:36:16.664903"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Create (0.1ms)[0m  [1m[32mINSERT INTO "users" ("full_name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["full_name", "Dawson Bauer"], ["email", "dawsonbauer@gmail.com"], ["password_digest", "1234"], ["created_at", "2022-10-25 21:36:16.673401"], ["updated_at", "2022-10-25 21:36:16.673401"]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUserRestaurant Create (0.2ms)[0m  [1m[32mINSERT INTO "user_restaurants" ("restaurant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 1], ["user_id", 1], ["created_at", "2022-10-25 21:36:16.691759"], ["updated_at", "2022-10-25 21:36:16.691759"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUserRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "user_restaurants" ("restaurant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 6], ["user_id", 3], ["created_at", "2022-10-25 21:36:16.702698"], ["updated_at", "2022-10-25 21:36:16.702698"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.0ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUserRestaurant Create (0.1ms)[0m  [1m[32mINSERT INTO "user_restaurants" ("restaurant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["restaurant_id", 3], ["user_id", 2], ["created_at", "2022-10-25 21:36:16.715773"], ["updated_at", "2022-10-25 21:36:16.715773"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_restaurants" ON "users"."id" = "user_restaurants"."user_id" WHERE "user_restaurants"."restaurant_id" = ? /* loading for inspect */ LIMIT ?[0m  [["restaurant_id", 1], ["LIMIT", 11]]
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_restaurants" ON "users"."id" = "user_restaurants"."user_id" WHERE "user_restaurants"."restaurant_id" = ? /* loading for inspect */ LIMIT ?[0m  [["restaurant_id", 1], ["LIMIT", 11]]
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" ORDER BY "restaurants"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_restaurants" ON "users"."id" = "user_restaurants"."user_id" WHERE "user_restaurants"."restaurant_id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["restaurant_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRestaurant Load (0.1ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" INNER JOIN "user_restaurants" ON "restaurants"."id" = "user_restaurants"."restaurant_id" WHERE "user_restaurants"."user_id" = ? /* loading for inspect */ LIMIT ?[0m  [["user_id", 1], ["LIMIT", 11]]
